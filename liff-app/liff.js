@@ -68,7 +68,7 @@ function uiToggleStateButton(pressed) {
 //function uiTemp(val1) {
 	//const el = document.getElementById("temp-val");
 		//el.innerText = val1;
-}
+//}
 
 function uiHumid(val2) {
 	const el = document.getElementById("humid-val");
