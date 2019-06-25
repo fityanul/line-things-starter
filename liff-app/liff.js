@@ -65,9 +65,9 @@ function uiToggleStateButton(pressed) {
     }
 }
 
-function uiTemp(val1) {
-	const el = document.getElementById("temp-val");
-		el.innerText = val1;
+//function uiTemp(val1) {
+	//const el = document.getElementById("temp-val");
+		//el.innerText = val1;
 }
 
 function uiHumid(val2) {
@@ -255,16 +255,16 @@ function liffGetButtonStateCharacteristic(characteristic) {
     // (Get notified when button state changes)
     characteristic.startNotifications().then(() => {
         characteristic.addEventListener('characteristicvaluechanged', e => {
-            const val1 = (new Uint8Array(e.target.value.buffer))[0];
-            uiTemp(val1);			
-			if (val1 > 0) {
+            //const val1 = (new Uint8Array(e.target.value.buffer))[0];
+            //uiTemp(val1);			
+			//if (val1 > 0) {
                 // press
-                uiToggleStateButton(true);
-            } else {
-                // release
-                uiToggleStateButton(false);
-                uiCountPressButton();
-            }
+                //uiToggleStateButton(true);
+            //} else {
+                //// release
+                //uiToggleStateButton(false);
+                //uiCountPressButton();
+            //}
 			const val2 = (new Uint8Array(e.target.value.buffer))[0];
 			uiHumid(val2);
 			if (val2 > 0) {
