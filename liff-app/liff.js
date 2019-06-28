@@ -1,5 +1,5 @@
 // User service UUID: Change this to your generated service UUID
-const USER_SERVICE_UUID         = 'f6c301b2-3ca3-49e0-9588-b7d0c1ac5925'; // LED, Button
+const USER_SERVICE_UUID         = 'abc955fc-82db-44fc-8437-7a75253848fc'; // LED, Button
 // User service characteristics
 const LED_CHARACTERISTIC_UUID   = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
 const BTN_CHARACTERISTIC_UUID   = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
@@ -65,15 +65,15 @@ function uiToggleStateButton(pressed) {
     }
 }
 
-//function uiTemp(val1) {
-	//const el = document.getElementById("temp-val");
-		//el.innerText = val1;
-//}
-
-function uiHumid(val2) {
-	const el = document.getElementById("humid-val");
-		el.innerText = val2;
+function uiTemp(val1) {
+	const el = document.getElementById("temp-val");
+		el.innerText = val1;
 }
+
+//function uiHumid(val2) {
+	//const el = document.getElementById("humid-val");
+		//el.innerText = val2;
+//}
 
 function uiToggleDeviceConnected(connected) {
     const elStatus = document.getElementById("status");
@@ -255,19 +255,9 @@ function liffGetButtonStateCharacteristic(characteristic) {
     // (Get notified when button state changes)
     characteristic.startNotifications().then(() => {
         characteristic.addEventListener('characteristicvaluechanged', e => {
-            //const val1 = (new Uint8Array(e.target.value.buffer))[0];
-            //uiTemp(val1);			
-			//if (val1 > 0) {
-                // press
-                //uiToggleStateButton(true);
-            //} else {
-                //// release
-                //uiToggleStateButton(false);
-                //uiCountPressButton();
-            //}
-			const val2 = (new Uint8Array(e.target.value.buffer))[0];
-			uiHumid(val2);
-			if (val2 > 0) {
+            const val1 = (new Uint8Array(e.target.value.buffer))[0];
+            uiTemp(val1);			
+			if (val1 > 0) {
                 // press
                 uiToggleStateButton(true);
             } else {
@@ -275,6 +265,17 @@ function liffGetButtonStateCharacteristic(characteristic) {
                 uiToggleStateButton(false);
                 uiCountPressButton();
             }
+		//characteristic.addEventListener('characteristicvaluechanged', f => {
+            //const val2 = (new Uint8Array(f.target.value.buffer))[0];
+			//uiHumid(val2);
+			//if (val2 > 0) {
+                // press
+                //uiToggleStateButton(true);
+            //} else {
+                // release
+                //uiToggleStateButton(false);
+                //uiCountPressButton();
+            //}
         });
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
