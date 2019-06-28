@@ -70,10 +70,10 @@ function uiTemp(val1) {
 		el.innerText = val1;
 }
 
-//function uiHumid(val2) {
-	//const el = document.getElementById("humid-val");
-		//el.innerText = val2;
-//}
+function uiHumid(val2) {
+	const el = document.getElementById("humid-val");
+		el.innerText = val2;
+}
 
 function uiToggleDeviceConnected(connected) {
     const elStatus = document.getElementById("status");
