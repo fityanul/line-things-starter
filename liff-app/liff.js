@@ -266,15 +266,7 @@ function liffGetButtonStateCharacteristic(characteristic) {
                 uiCountPressButton();
             }		
         });		
-    }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
-    });
-}
-
-function liffGetButtonStateCharacteristic(characteristic) {
-    // Add notification hook for button state
-    // (Get notified when button state changes)
-    	characteristic.addEventListener('characteristicvaluechanged', f => {
+		characteristic.addEventListener('characteristicvaluechanged', f => {
             const val2 = (new Uint8Array(f.target.value.buffer))[0];
 			uiHumid(val2);
 			if (val2 > 0) {
