@@ -264,18 +264,19 @@ function liffGetButtonStateCharacteristic(characteristic) {
                 // release
                 uiToggleStateButton(false);
                 uiCountPressButton();
-            }
-		//characteristic.addEventListener('characteristicvaluechanged', f => {
-            //const val2 = (new Uint8Array(f.target.value.buffer))[0];
-			//uiHumid(val2);
-			//if (val2 > 0) {
+            }		
+        });		
+		characteristic.addEventListener('characteristicvaluechanged', f => {
+            const val2 = (new Uint8Array(f.target.value.buffer))[0];
+			uiHumid(val2);
+			if (val2 > 0) {
                 // press
-                //uiToggleStateButton(true);
-            //} else {
+                uiToggleStateButton(true);
+            } else {
                 // release
-                //uiToggleStateButton(false);
-                //uiCountPressButton();
-            //}
+                uiToggleStateButton(false);
+                uiCountPressButton();
+            }
         });
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
